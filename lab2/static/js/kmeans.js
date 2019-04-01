@@ -24,10 +24,13 @@ function kmeans(data, k) {
 	   
 	  
 	//Just nu plotas k=2 centroider random
+
+	//placera ut två centroider at random position
 	for(i = 0; i < k; i++){
 	  var pos = Math.floor(Math.random(0, 1) * data.length);  //array måste vara heltal
 	  centroids.push(data[pos]);
 	  console.log(pos);
+	  console.log(data[pos]);
 	}
 	
 	var myCents = closestCentroid(data, centroids, distances);
@@ -172,6 +175,8 @@ function kmeans(data, k) {
 	//find min and max value for every data A, B, C in centorid1 and centroid2
 	function findMinMax(centroid1, centroid2, data){
 
+
+
 		//Kolla om någon av arrayerna är tom
 		//Vad händer om all data tillhör cent 1 eller cent 2
 
@@ -179,7 +184,7 @@ function kmeans(data, k) {
 		{
 			var minAcen1 = data[centroid1[0]].A; 
 			var minBcen1 = data[centroid1[0]].B; 
-			var minCcen1 = data[centroid1[0]].C; 
+			var minCcen1 = data[centroid1[0]].C;
 			var maxAcen1 = 0;
 			var maxBcen1 = 0;
 			var maxCcen1 = 0;
