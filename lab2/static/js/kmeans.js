@@ -155,7 +155,86 @@ function kmeans(data, k) {
 			//console.log(centroid1[0]);
 			//console.log(data[centroid1].A.max);
 			//console.log(data[centroid1[0]].A);
-			findMinMax(centroid1,centroid2,data);
+
+
+
+			if (centroid1.length != 0)
+			{
+				var minAcen1 = data[centroid1[0]].A; 
+				var minBcen1 = data[centroid1[0]].B; 
+				var minCcen1 = data[centroid1[0]].C;
+				var maxAcen1 = 0;
+				var maxBcen1 = 0;
+				var maxCcen1 = 0;
+
+				for(i = 0; i < centroid1.length; i++)
+				{
+					if(data[centroid1[i]].A < minAcen1)
+					{
+						maxAcen1 = minAcen1;
+						minAcen1 = data[centroid1[i]].A;
+
+					}
+					if(data[centroid1[i]].B < minBcen1)
+					{
+						maxAcen1 = minAcen1;
+						minBcen1 = data[centroid1[i]].B;
+					}
+					if(data[centroid1[i]].C < minCcen1)
+					{
+						maxAcen1 = minAcen1;
+						minCcen1 = data[centroid1[i]].C;
+					}
+				}
+
+			}
+
+			if( centroid2.length != 0)
+			{
+				var minAcen2 = data[centroid2[0]].A; 
+				var minBcen2 = data[centroid2[0]].B; 
+				var minCcen2 = data[centroid2[0]].C; 
+				var maxAcen2 = 0;
+				var maxBcen2 = 0;
+				var maxCcen2 = 0;
+
+				for(i = 0; i < centroid2.length; i++)
+				{
+					if(data[centroid2[i]].A < minAcen2)
+					{
+						maxAcen2 = minAcen2;
+						minAcen2 = data[centroid2[i]].A;
+
+					}
+					if(data[centroid2[i]].B < minBcen2)
+					{
+						maxAcen2 = minAcen2;
+						minBcen2 = data[centroid2[i]].B;
+					}
+					if(data[centroid2[i]].C < minCcen2)
+					{
+						maxAcen2 = minAcen2;
+						minCcen2 = data[centroid2[i]].C;
+					}
+				}
+			}
+
+			cen1A = Math.abs(maxAcen1-minAcen1)/2;
+			cen1B = Math.abs(maxBcen1-minBcen1)/2; 
+			cen1C = Math.abs(maxCcen1-minCcen1)/2;
+
+			cen2A = Math.abs(maxAcen2-minAcen2)/2;
+			cen2B = Math.abs(maxBcen2-minBcen2)/2;
+			cen2C = Math.abs(maxCcen2-minCcen2)/2;
+
+			var newCent1 = {A:cen1A, B:cen1B, C:cen1C};
+			var newCent2 = {A:cen2A, B:cen2B, C:cen2C};
+
+
+			console.log(newCent1);
+			console.log(newCent2);
+
+			//findMinMax(centroid1,centroid2,data);
 
 /*
 			var c1min = data.[centroid1[0]];
@@ -175,12 +254,12 @@ function kmeans(data, k) {
 	//find min and max value for every data A, B, C in centorid1 and centroid2
 	function findMinMax(centroid1, centroid2, data){
 
-
-
 		//Kolla om någon av arrayerna är tom
 		//Vad händer om all data tillhör cent 1 eller cent 2
 
-		if ((centroid1) != 0)
+		var maxmin = [];
+
+		if (centroid1.length != 0)
 		{
 			var minAcen1 = data[centroid1[0]].A; 
 			var minBcen1 = data[centroid1[0]].B; 
@@ -211,9 +290,8 @@ function kmeans(data, k) {
 
 		}
 
-		if((centroid2) != 0)
+		if( centroid2.length != 0)
 		{
-
 			var minAcen2 = data[centroid2[0]].A; 
 			var minBcen2 = data[centroid2[0]].B; 
 			var minCcen2 = data[centroid2[0]].C; 
