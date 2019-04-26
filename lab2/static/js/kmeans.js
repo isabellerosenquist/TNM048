@@ -251,6 +251,10 @@ function kmeans(data, k) {
 
 	}
 
+	function checkQuality(){
+
+	}
+
 	//find min and max value for every data A, B, C in centorid1 and centroid2
 	function findMinMax(centroid1, centroid2, data){
 
